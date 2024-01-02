@@ -5,4 +5,12 @@ const getProducts = async () => {
   return products;
 };
 
-module.exports = { getProducts };
+const getById = async (id) => {
+  const productSearched = await productsModel.getById(id);
+  if (!productSearched) {
+    return { message: 'Product not found' };
+  }
+  return productSearched;
+};
+
+module.exports = { getProducts, getById };
